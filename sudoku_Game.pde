@@ -10,13 +10,13 @@ boolean win = false;
 
 void setup() {
   background(0);
-  fullScreen();
+  size(600,600);
   squareDire=min(width, height)-200;
   LOffset = (width-squareDire)/2;
   DOffset = (height-squareDire)/2;
   sudokuNumbers=growSudoku();
   //startingNumbers=sudokuNumbers;
-  startingNumbers [3] [3] = 6;
+  //startingNumbers [3] [3] = 6;
   for (int row=0; row<9; row++) {
     for (int column=0; column<9; column++) {
       sudokuGame [row] [column] = startingNumbers [row] [column];
@@ -103,8 +103,16 @@ void keyPressed() {
     }
     win=W;
     break;
+    case(115):
+    //s
+    println("solving...");
+    sudokuGame=solveSudoku(sudokuGame);
+    break;
     case(-1):
     number=key-48;
+    break;
+    default:
+    println(int(key));
     break;
   }
   if (number!=-1) {

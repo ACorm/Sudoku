@@ -1,4 +1,5 @@
 IntList impossibleDigits;  //<>//
+IntList bufferList;
 boolean back = false;
 int [] [] newNumbers = new int [9] [9];
 int [] [] [] preTriedDigits = new int [9] [9] [9];
@@ -9,11 +10,8 @@ int [] [] growSudoku() {
     for (row=0; row<9; row++) {
       int digit=0;
       while (digit==0) {        
-        impossibleDigits = new IntList();
-        rowCheck();
-        columnCheck();
-        squareCheck();
-        diagonallyAdjacentCheck();
+        impossibleDigits = new IntList();        
+        impossibleDigits.append(checkDigits(row,column,newNumbers));     
         boolean impossible = true;        
         for (int numberCheck = 1; numberCheck<10; numberCheck++) {
           if (!impossibleDigits.hasValue(numberCheck) && preTriedDigits [row] [column] [numberCheck-1]==0) {
@@ -42,55 +40,33 @@ int [] [] growSudoku() {
           }
         }
       }
+      println("new #");
       newNumbers [row] [column]=digit;
     }
   }
+  println("Done");
   return(newNumbers);
 }
 
-
-
-void rowCheck() {
-  for (int rowCheck=0; rowCheck<9; rowCheck++) {
-    if (!impossibleDigits.hasValue(newNumbers [row] [rowCheck]) && newNumbers [row] [rowCheck]!=0) {
-      impossibleDigits.append(newNumbers [row] [rowCheck]);
-    }
-  }
+IntList checkDigits(int row, int column, int [] [] mazeState) {
+  IntList list;
+  list=new IntList ();
+  list.append(rowCheck(row, mazeState));
+  list.append(columnCheck(column, mazeState));
+  list.append(squareCheck(row, column, mazeState));
+  list.append(diagonallyAdjacentCheck(row, column, mazeState));
+  list=removeDups(list);
+  return(list);
 }
 
-void columnCheck() {
-  for (int columnCheck=0; columnCheck<9; columnCheck++) {
-    if (!impossibleDigits.hasValue(newNumbers [columnCheck] [column]) && newNumbers [columnCheck] [column]!=0) {
-      impossibleDigits.append(newNumbers [columnCheck] [column]);
+IntList removeDups(IntList bufferList) { 
+  IntList list;
+  list = new IntList ();
+  for (int add=0; add<bufferList.size(); add++) {
+    if (!list.hasValue(bufferList.get(add)) && bufferList.get(add)!=0) {
+      list.append(bufferList.get(add));
     }
   }
-}
-
-void squareCheck() {
-  for (int squareCheck=0; squareCheck<9; squareCheck++) {
-    int valueCheck = newNumbers [floor((squareCheck)/3)+3*floor(row/3)] [(squareCheck)%3+3*floor(column/3)];
-    if (!impossibleDigits.hasValue(valueCheck) && valueCheck!=0) {
-      impossibleDigits.append(valueCheck);
-    }
-  }
-}
-
-void diagonallyAdjacentCheck(){
-          for (int diagonalCheck=0; diagonalCheck<4; diagonalCheck++) {
-          int yMod = -1;
-          int xMod = -1;
-          if (diagonalCheck==0 || diagonalCheck==1) {
-            xMod+=2;
-          }
-          if (diagonalCheck==1 || diagonalCheck==3) {
-            yMod+=2;
-          }
-          int valueCheck=0;
-          if (row-xMod>-1 && row-xMod<9 && column-yMod>-1 && column-yMod<9) {
-            valueCheck = newNumbers [row-xMod] [column-yMod];
-          }
-          if (!impossibleDigits.hasValue(valueCheck) && valueCheck!=0) {
-            impossibleDigits.append(valueCheck);
-          }
-        }
+  //list.print();
+  return(list); //<>//
 }

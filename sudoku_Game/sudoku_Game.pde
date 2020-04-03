@@ -10,14 +10,14 @@ boolean win = false;
 
 void setup() {
   background(0);
-  size(600,600);
+  size(600, 600);
   squareDire=min(width, height)-200;
   LOffset = (width-squareDire)/2;
   DOffset = (height-squareDire)/2;
   sudokuNumbers=growSudoku();
-  //startingNumbers=sudokuNumbers;
-  
-  
+  startingNumbers=sudokuNumbers;
+
+
   //startingNumbers [1] [0]=3;
   //startingNumbers [2] [0]=9;
   //startingNumbers [5] [0]=7;
@@ -48,20 +48,20 @@ void setup() {
   //startingNumbers [2] [8]=5;
   //startingNumbers [4] [8]=6;
   //startingNumbers [8] [8]=2;
-  
-  
-  startingNumbers=new int [] []{
-  {6,0,0,0,7,0,1,0,0},
-  {3,0,0,0,0,9,0,2,0},
-  {0,1,7,0,0,0,0,9,6},
-  {0,0,0,0,0,5,6,0,0},  
-  {4,0,0,0,0,0,0,0,2},  
-  {0,0,3,8,0,0,0,0,0},  
-  {9,7,0,0,0,0,8,4,0},
-  {0,4,0,7,0,0,0,0,5},  
-  {0,0,6,0,2,0,0,0,9}  
-  };
-  
+
+
+  //startingNumbers=new int [] []{
+  //  {6, 0, 0, 0, 7, 0, 1, 0, 0}, 
+  //  {3, 0, 0, 0, 0, 9, 0, 2, 0}, 
+  //  {0, 1, 7, 0, 0, 0, 0, 9, 6}, 
+  //  {0, 0, 0, 0, 0, 5, 6, 0, 0}, 
+  //  {4, 0, 0, 0, 0, 0, 0, 0, 2}, 
+  //  {0, 0, 3, 8, 0, 0, 0, 0, 0}, 
+  //  {9, 7, 0, 0, 0, 0, 8, 4, 0}, 
+  //  {0, 4, 0, 7, 0, 0, 0, 0, 5}, 
+  //  {0, 0, 6, 0, 2, 0, 0, 0, 9}  
+  //};
+
   //startingNumbers [3] [3] = 6;
   for (int row=0; row<9; row++) {
     for (int column=0; column<9; column++) {
@@ -157,7 +157,7 @@ void keyPressed() {
     case(-1):
     number=key-48;
     break;
-    default:
+  default:
     println(int(key));
     break;
   }

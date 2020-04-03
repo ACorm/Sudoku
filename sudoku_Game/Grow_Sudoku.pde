@@ -1,4 +1,4 @@
-IntList impossibleDigits;  //<>//
+IntList impossibleDigits; 
 IntList bufferList;
 boolean back = false;
 int [] [] newNumbers = new int [9] [9];
@@ -6,8 +6,9 @@ int [] [] [] preTriedDigits = new int [9] [9] [9];
 int column=0;
 int row=0;
 int [] [] growSudoku() {
+  int completion =0;
   for (column=0; column<9; column++) {
-    for (row=0; row<9; row++) {
+    for (row=0; row<9; row++) {      
       int digit=0;
       while (digit==0) {        
         impossibleDigits = new IntList();        
@@ -34,6 +35,8 @@ int [] [] growSudoku() {
           impossibleDigits.clear();
           impossibleDigits.append(newNumbers [row] [column]);
           preTriedDigits [row] [column] [newNumbers [row] [column]-1] = 1;
+          //print(completion + ", ");
+          completion--;
           back=true;
           newNumbers [row] [column]=0;
         } else {
@@ -44,7 +47,8 @@ int [] [] growSudoku() {
           }
         }
       }
-      //println("new #");
+      //print(completion + ", ");
+      completion++;
       newNumbers [row] [column]=digit;
     }
   }
@@ -55,10 +59,8 @@ int [] [] growSudoku() {
 IntList checkDigits(int row, int column, int [] [] mazeState) {
   IntList list;
   list=new IntList ();
-  list.append(rowCheck(row, mazeState));
-  list.append(columnCheck(column, mazeState));
+  list.append(relativeCheck(row,column,mazeState));
   list.append(squareCheck(row, column, mazeState));
-  list.append(diagonallyAdjacentCheck(row, column, mazeState));
   list=removeDups(list);
   return(list);
 }
@@ -71,5 +73,5 @@ IntList removeDups(IntList bufferList) {
       list.append(bufferList.get(add));
     }
   }
-  return(list); //<>//
+  return(list);
 }

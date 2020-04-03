@@ -1,11 +1,15 @@
-int [] [] [] impossibleNumbers = new int [9] [9] [9];
+int [] [] [] impossibleNumbers;
+boolean change = true;
 IntList buffer;
-int [] [] solveSudoku(int [] [] sudokuState) {
-  boolean solved = false;
-  while (!solved) {
-    boolean change = false;
+int [] [] sudokuState;
+int [] [] solveSudoku(int [] [] transfer) {
+  change=true;
+  impossibleNumbers=new int [9] [9] [9];
+  sudokuState=transfer;
+  while (change) {
+    change = false;
     for (int row=0; row<9; row++) {
-      for (int column=0; column<9; column++) {      
+      for (int column=0; column<9; column++) {
         if (sudokuState [column] [row]==0) {
           buffer=checkDigits(column, row, sudokuState);
           if (buffer.size()==8) {
@@ -21,16 +25,15 @@ int [] [] solveSudoku(int [] [] sudokuState) {
                 impossibleNumbers [column] [row] [value] = 1;
               }
             }
-            if(buffer.size()==9){
-              println("while trying to solve the maze the program realised it is impossible");
+            if (buffer.size()==9) {
+              println("while trying to solve the sudoku the program realised it is impossible");
             }
           }
         }
       }
-    }    
-    solved=!change;
+    }
+    squareElim(); //<>//
   }
-
 
   boolean W = true;
   //  for (int row =0; row<9; row++) {
@@ -45,4 +48,39 @@ int [] [] solveSudoku(int [] [] sudokuState) {
   //    }
   //  }  
   return(sudokuState);
+}
+
+
+void squareElim() {
+  for (int SquareX=0; SquareX<3; SquareX++) { //<>//
+    for (int SquareY=0; SquareY<3; SquareY++) { //<>//
+      nextValue:
+      for (int value=0; value<9; value++) {          //<>//
+        int possible = 0;
+        int [] [] possibilities = new int [3] [3];  
+        for (int row=0; row<3; row++) { //<>//
+          for (int column=0; column<3; column++) {                      //<>//
+            if (sudokuState [SquareX*3+column] [SquareY*3+row]==value+1) { //<>//
+              continue nextValue;
+            } else if (sudokuState [SquareX*3+column] [SquareY*3+row]==0) {                                 
+              if (impossibleNumbers [SquareX*3+column] [SquareY*3+row] [value]==0) { //<>//
+                possibilities [column] [row] = 1;
+                possible++;
+              }
+            }
+          }
+        }        
+        if (possible==1) {
+          for (int row=0; row<3; row++) { //<>//
+            for (int column=0; column<3; column++) { //<>//
+              if(possibilities [column] [row]==1){ //<>//
+                change=true;
+                sudokuState [SquareX*3+column] [SquareY*3+row]=value+1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

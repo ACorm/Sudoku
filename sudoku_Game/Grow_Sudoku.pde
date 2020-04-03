@@ -26,7 +26,11 @@ int [] [] growSudoku() {
             }
           }
           column=column-1+floor((row+9)/10);
-          row=(row+8)%9; 
+          row=(row+8)%9;
+          if(column<0){
+            println("with the rules you currently have selected it is impossible to generate a Sudoku");
+            return(null);
+          }
           impossibleDigits.clear();
           impossibleDigits.append(newNumbers [row] [column]);
           preTriedDigits [row] [column] [newNumbers [row] [column]-1] = 1;
@@ -40,7 +44,7 @@ int [] [] growSudoku() {
           }
         }
       }
-      println("new #");
+      //println("new #");
       newNumbers [row] [column]=digit;
     }
   }
@@ -67,6 +71,5 @@ IntList removeDups(IntList bufferList) {
       list.append(bufferList.get(add));
     }
   }
-  //list.print();
   return(list); //<>//
 }

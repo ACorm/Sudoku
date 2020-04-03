@@ -18,37 +18,49 @@ void setup() {
   //startingNumbers=sudokuNumbers;
   
   
-  startingNumbers [1] [0]=3;
-  startingNumbers [2] [0]=9;
-  startingNumbers [5] [0]=7;
-  startingNumbers [8] [0]=5;
-  startingNumbers [1] [1]=7;
-  startingNumbers [3] [1]=9;
-  startingNumbers [4] [1]=1;
-  startingNumbers [7] [1]=2;
-  startingNumbers [0] [2]=5;
-  startingNumbers [1] [2]=4;
-  startingNumbers [8] [2]=1;
-  startingNumbers [2] [3]=3;
-  startingNumbers [4] [3]=7;
-  startingNumbers [5] [3]=1;
-  startingNumbers [6] [3]=2;
-  startingNumbers [0] [4]=2;
-  startingNumbers [2] [4]=7;
-  startingNumbers [3] [4]=3;
-  startingNumbers [5] [4]=9;
-  startingNumbers [6] [4]=5;
-  startingNumbers [0] [5]=9;
-  startingNumbers [7] [5]=3;
-  startingNumbers [8] [6]=6;
-  startingNumbers [1] [7]=2;
-  startingNumbers [6] [7]=3;
-  startingNumbers [7] [7]=4;
-  startingNumbers [8] [7]=7;
-  startingNumbers [2] [8]=5;
-  startingNumbers [4] [8]=6;
-  startingNumbers [8] [8]=2;
+  //startingNumbers [1] [0]=3;
+  //startingNumbers [2] [0]=9;
+  //startingNumbers [5] [0]=7;
+  //startingNumbers [8] [0]=5;
+  //startingNumbers [1] [1]=7;
+  //startingNumbers [3] [1]=9;
+  //startingNumbers [4] [1]=1;
+  //startingNumbers [7] [1]=2;
+  //startingNumbers [0] [2]=5;
+  //startingNumbers [1] [2]=4;
+  //startingNumbers [8] [2]=1;
+  //startingNumbers [2] [3]=3;
+  //startingNumbers [4] [3]=7;
+  //startingNumbers [5] [3]=1;
+  //startingNumbers [6] [3]=2;
+  //startingNumbers [0] [4]=2;
+  //startingNumbers [2] [4]=7;
+  //startingNumbers [3] [4]=3;
+  //startingNumbers [5] [4]=9;
+  //startingNumbers [6] [4]=5;
+  //startingNumbers [0] [5]=9;
+  //startingNumbers [7] [5]=3;
+  //startingNumbers [8] [6]=6;
+  //startingNumbers [1] [7]=2;
+  //startingNumbers [6] [7]=3;
+  //startingNumbers [7] [7]=4;
+  //startingNumbers [8] [7]=7;
+  //startingNumbers [2] [8]=5;
+  //startingNumbers [4] [8]=6;
+  //startingNumbers [8] [8]=2;
   
+  
+  startingNumbers=new int [] []{
+  {6,0,0,0,7,0,1,0,0},
+  {3,0,0,0,0,9,0,2,0},
+  {0,1,7,0,0,0,0,9,6},
+  {0,0,0,0,0,5,6,0,0},  
+  {4,0,0,0,0,0,0,0,2},  
+  {0,0,3,8,0,0,0,0,0},  
+  {9,7,0,0,0,0,8,4,0},
+  {0,4,0,7,0,0,0,0,5},  
+  {0,0,6,0,2,0,0,0,9}  
+  };
   
   //startingNumbers [3] [3] = 6;
   for (int row=0; row<9; row++) {
@@ -68,23 +80,23 @@ void draw() {
   } else {
     background(200);
   }
-  for (int x=0; x<9; x++) {
-    for (int y=0; y<9; y++) {
+  for (int column=0; column<9; column++) {
+    for (int row=0; row<9; row++) {
       pushMatrix();
-      translate(squareDire/9.0*(x+0.5)+LOffset, squareDire-squareDire/9.0*(y+0.5)+DOffset);
-      if (highlightedSquare [x] [y]==1) {
+      translate(squareDire/9.0*(column+0.5)+LOffset, squareDire-squareDire/9.0*(row+0.5)+DOffset);
+      if (highlightedSquare [column] [row]==1) {
         fill(highlightColor);
       } else {
         fill(0);
       }
       rect(0, 0, squareDire/9.0, squareDire/9.0);
-      if (sudokuGame [x] [y] !=0) {
-        if (startingNumbers [x] [y]!=0) {
+      if (sudokuGame [column] [row] !=0) {
+        if (startingNumbers [column] [row]!=0) {
           fill(255);
         } else {
           fill(155);
         }
-        text(sudokuGame [x] [y], 0, 0);
+        text(sudokuGame [column] [row], 0, 0);
       }
       popMatrix();
     }

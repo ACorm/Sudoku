@@ -39,7 +39,7 @@ IntList squareCheck(int row, int column,int [] [] MazeState) {
   list = new IntList ();
   if(blocks){
   for (int squareCheck=0; squareCheck<9; squareCheck++) {
-    int valueCheck = MazeState [floor((squareCheck)/3)+3*floor(row/3)] [(squareCheck)%3+3*floor(column/3)];
+    int valueCheck = MazeState [((squareCheck)/3)+3*(row/3)] [(squareCheck)%3+3*(column/3)];
     if (valueCheck!=0) {
       list.append(valueCheck);
     }

@@ -17,7 +17,7 @@ void setup() {
   sudokuNumbers=growSudoku();
   //startingNumbers=sudokuNumbers;
   
-  startingNumbers = StartingNumbers.FIRST_PUZZLE;
+  startingNumbers = StartingNumbers.FIRST_PUZZLE_2;
   //startingNumbers=StartingNumbers.EVIL_PUZZLE;
   
   //startingNumbers [3] [3] = 6;

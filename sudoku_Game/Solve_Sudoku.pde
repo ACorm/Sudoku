@@ -1,4 +1,4 @@
-int [] [] [] impossibleNumbers;
+int [] [] [] impossibleNumbers; //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
 boolean change = true;
 IntList buffer;
 int [] [] sudokuState;
@@ -32,7 +32,7 @@ int [] [] solveSudoku(int [] [] transfer) {
         }
       }
     }
-    squareElim(); //<>//
+    squareElim();
   }
 
   boolean W = true;
@@ -52,18 +52,18 @@ int [] [] solveSudoku(int [] [] transfer) {
 
 
 void squareElim() {
-  for (int SquareX=0; SquareX<3; SquareX++) { //<>//
-    for (int SquareY=0; SquareY<3; SquareY++) { //<>//
-      nextValue:
-      for (int value=0; value<9; value++) {          //<>//
+  for (int SquareX=0; SquareX<3; SquareX++) {
+    for (int SquareY=0; SquareY<3; SquareY++) {
+    nextValue:
+      for (int value=0; value<9; value++) {         
         int possible = 0;
         int [] [] possibilities = new int [3] [3];  
-        for (int row=0; row<3; row++) { //<>//
-          for (int column=0; column<3; column++) {                      //<>//
-            if (sudokuState [SquareX*3+column] [SquareY*3+row]==value+1) { //<>//
+        for (int row=0; row<3; row++) {
+          for (int column=0; column<3; column++) {                     
+            if (sudokuState [SquareX*3+column] [SquareY*3+row]==value+1) {
               continue nextValue;
             } else if (sudokuState [SquareX*3+column] [SquareY*3+row]==0) {                                 
-              if (impossibleNumbers [SquareX*3+column] [SquareY*3+row] [value]==0) { //<>//
+              if (impossibleNumbers [SquareX*3+column] [SquareY*3+row] [value]==0) {
                 possibilities [column] [row] = 1;
                 possible++;
               }
@@ -71,9 +71,9 @@ void squareElim() {
           }
         }        
         if (possible==1) {
-          for (int row=0; row<3; row++) { //<>//
-            for (int column=0; column<3; column++) { //<>//
-              if(possibilities [column] [row]==1){ //<>//
+          for (int row=0; row<3; row++) {
+            for (int column=0; column<3; column++) {
+              if (possibilities [column] [row]==1) {
                 change=true;
                 sudokuState [SquareX*3+column] [SquareY*3+row]=value+1;
               }

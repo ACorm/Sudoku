@@ -5,58 +5,53 @@ int [] [] newNumbers = new int [9] [9];
 int [] [] [] preTriedDigits = new int [9] [9] [9];
 int column=0;
 int row=0;
-int [] [] growSudoku() {
+void growSudoku() {
   int completion =0;
-    
   for (column=0; column<9; column++) {
     for (row=0; row<9; row++) {   
       sudokuCells [column] [row].checkDigits(newNumbers);
-      while (sudokuCells [column] [row].value==0) {                            
-        boolean impossible = true;        
-
-        if(sudokuCells [column] [row].impossibleValues.size()<8){
-          impossible=true;
-        }
-        
-        if (impossible) {
+      while (sudokuCells [column] [row].value==0) {                               
+        if (sudokuCells [column] [row].impossibleValues.size()>8) {
           if (back) {
-            for (int num=0; num<9; num++) {
-              preTriedDigits [row] [column] [num] = 0;
-            }
+            sudokuCells [column] [row].impossibleValues.clear();
           }
           column=column-1+floor((row+9)/10);
           row=(row+8)%9;
           if (column<0) {
             println("with the rules you currently have selected it is impossible to generate a Sudoku");
-            return(null);
           }
-          impossibleDigits.clear();
-          impossibleDigits.append(newNumbers [row] [column]);
-          preTriedDigits [row] [column] [newNumbers [row] [column]-1] = 1;
-          //print(completion + ", ");
-          completion--;
-          //background(0);
-          textSize(50);
-          stroke(255);
-          text("." + 100*completion/81, width/2, height/2);
+          if (!sudokuCells [column] [row].impossibleValues.hasValue(sudokuCells [column] [row].value)) {
+            sudokuCells [column] [row].impossibleValues.append(sudokuCells [column] [row].value);
+          }          
+          ////print(completion + ", ");
+          //completion--;
+          ////background(0);
+          //textSize(50);
+          //stroke(255);
+          //text("." + 100*completion/81, width/2, height/2);
           back=true;
-          newNumbers [row] [column]=0;
+          sudokuCells [column] [row].value=0;
         } else {
           back=false;
-          digit=round(random(0.5, 9.5));
-          while (impossibleDigits.hasValue(digit) || preTriedDigits [row] [column] [digit-1]!=0) {
+          int digit=round(random(0.5, 9.5));
+          ;
+          while (sudokuCells [column] [row].impossibleValues.hasValue(digit)) {
             digit=round(random(0.5, 9.5));
           }
+          sudokuCells [column] [row].value=digit;
+          completion++;
+          ////background(0);
+          //textSize(50);
+          //stroke(255);
+          //println("." + 100*completion/81, width/2, height/2);
         }
       }
-      completion++;
-      //background(0);
-      textSize(50);
-      stroke(255);
-      println("." + 100*completion/81, width/2, height/2);     
-      newNumbers [row] [column]=digit;
     }
   }
   println("Done");
-  return(newNumbers);
+  for(int column=0;column<9;column++){
+    for(int row=0;row<9;row++){
+      sudokuCells [column] [row].doneSolving();
+    }
+  }
 }

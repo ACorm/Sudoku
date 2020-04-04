@@ -12,6 +12,11 @@ class cell {
     column=tempColumn;
   }
 
+  void doneSolving(){
+
+  }
+  
+  
   void checkDigits(int [] [] mazeState) {
     IntList list;
     list=new IntList ();

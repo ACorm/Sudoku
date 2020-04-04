@@ -7,19 +7,17 @@ int column=0;
 int row=0;
 int [] [] growSudoku() {
   int completion =0;
+    
   for (column=0; column<9; column++) {
-    for (row=0; row<9; row++) {      
-      int digit=0;
-      while (digit==0) {        
-        impossibleDigits = new IntList();        
-        impossibleDigits.append(checkDigits(row, column, newNumbers));     
+    for (row=0; row<9; row++) {   
+      sudokuCells [column] [row].checkDigits(newNumbers);
+      while (sudokuCells [column] [row].value==0) {                            
         boolean impossible = true;        
-        for (int numberCheck = 1; numberCheck<10; numberCheck++) {
-          if (!impossibleDigits.hasValue(numberCheck) && preTriedDigits [row] [column] [numberCheck-1]==0) {
-            impossible=false;
-          }
-        }
 
+        if(sudokuCells [column] [row].impossibleValues.size()<8){
+          impossible=true;
+        }
+        
         if (impossible) {
           if (back) {
             for (int num=0; num<9; num++) {

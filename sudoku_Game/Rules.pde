@@ -22,7 +22,7 @@ int [] [] Rules = new int [] [] {
 
 IntList relativeCheck(int column, int row, int [] [] MazeState) {
   IntList list;
-  list = new IntList ();   //<>//
+  list = new IntList ();   //<>// //<>//
   for (int rowCheck=-8; rowCheck<9; rowCheck++) {
     for (int columnCheck=-8; columnCheck<9; columnCheck++) {
       if (Rules [columnCheck+8] [rowCheck+8]==1 && -1<row+rowCheck && row+rowCheck<9 && -1<column+columnCheck && column+columnCheck<9) {
@@ -34,7 +34,7 @@ IntList relativeCheck(int column, int row, int [] [] MazeState) {
 }
 
 IntList squareCheck(int row, int column, int [] [] MazeState) {
-  IntList list; //<>//
+  IntList list; //<>// //<>//
   list = new IntList ();
   if (blocks) {
     for (int squareCheck=0; squareCheck<9; squareCheck++) {

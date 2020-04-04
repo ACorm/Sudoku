@@ -8,30 +8,30 @@ int LOffset=0;
 int DOffset=0;
 boolean win = false;
 
-Cell cell;
+
+cell [] [] sudokuCells;
 
 void setup() {
-  
+  sudokuCells = new cell [9] [9];
   for (int row=0; row<9; row++) {
     for (int column=0; column<9; column++) {
-      cell= new Cell(row,column);
+      sudokuCells [column] [row] = new cell(row, column);
     }
   }
-  
-  
-  
+
+
   background(0);
   size(600, 600);
   squareDire=min(width, height)-200;
   LOffset = (width-squareDire)/2;
   DOffset = (height-squareDire)/2;
   sudokuNumbers=growSudoku();
-  
+
   startingNumbers=sudokuNumbers;
-  
+
   //startingNumbers = StartingNumbers.FIRST_PUZZLE_2;
   //startingNumbers=StartingNumbers.EVIL_PUZZLE;
-  
+
   for (int row=0; row<9; row++) {
     for (int column=0; column<9; column++) {
       sudokuGame [row] [column] = startingNumbers [row] [column];
@@ -51,23 +51,7 @@ void draw() {
   }
   for (int column=0; column<9; column++) {
     for (int row=0; row<9; row++) {
-      pushMatrix();
-      translate(squareDire/9.0*(column+0.5)+LOffset, squareDire-squareDire/9.0*(row+0.5)+DOffset);
-      if (highlightedSquare [column] [row]==1) {
-        fill(highlightColor);
-      } else {
-        fill(0);
-      }
-      rect(0, 0, squareDire/9.0, squareDire/9.0);
-      if (sudokuGame [column] [row] !=0) {
-        if (startingNumbers [column] [row]!=0) {
-          fill(255);
-        } else {
-          fill(155);
-        }
-        text(sudokuGame [column] [row], 0, 0);
-      }
-      popMatrix();
+      sudokuCells [column] [row].DrawCell();
     }
   }
 }
@@ -76,18 +60,22 @@ void mouseDragged() {
   int column=floor((mouseX-LOffset)*9.0/squareDire);
   int row=8-floor((mouseY-DOffset)*9.0/squareDire);
   if ((row+1)>0 && (row+1)<10 && (column+1)>0 && (column+1)<10) {
-    highlightedSquare [column] [row]=1;
+    sudokuCells [column] [row].highlighted=true;
   }
 }
 
 void mousePressed() {
   if (!(keyPressed && keyCode == SHIFT )) {
-    highlightedSquare = new int [9] [9];
+    for (int column=0; column<9; column++) {
+      for (int row=0; row<9; row++) {
+        sudokuCells [column] [row].highlighted=false;
+      }
+    }
   }
   int column=floor((mouseX-LOffset)*9.0/squareDire);
   int row=8-floor((mouseY-DOffset)*9.0/squareDire);
   if ((row+1)>0 && (row+1)<10 && (column+1)>0 && (column+1)<10) {
-    highlightedSquare [column] [row]=1;
+    sudokuCells [column] [row].highlighted=true;
   }
 }
 
@@ -107,7 +95,7 @@ void keyPressed() {
     boolean W = true;
     for (int row =0; row<9; row++) {
       for (int column =0; column<9; column++) {
-        if (sudokuGame [column] [row]!=sudokuNumbers [column] [row]) {
+        if (sudokuCells [column] [row].value != sudokuCells [column] [row].endValue) {
           W = false;
           break;
         }
@@ -133,8 +121,8 @@ void keyPressed() {
   if (number!=-1) {
     for (int row =0; row<9; row++) {
       for (int column =0; column<9; column++) {
-        if (highlightedSquare [column] [row]==1 && startingNumbers [column] [row]==0) {
-          sudokuGame [column] [row]=number;
+        if (sudokuCells [column] [row].highlighted && sudokuCells [column] [row].starter==false) {
+          sudokuCells [column] [row].value = number;
         }
       }
     }

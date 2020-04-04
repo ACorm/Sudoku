@@ -1,14 +1,15 @@
-class Cell {
+class cell {
   int row;
   int column;
   int value;
+  int endValue;
   IntList impossibleValues;
   boolean highlighted = false;
-  boolean startingNumber = false;
+  boolean starter = false;
 
-  Cell(int Row, int Column) {
-    row=Row;
-    column=Column;
+  cell(int tempRow, int tempColumn) {
+    row=tempRow;
+    column=tempColumn;
   }
 
   void checkDigits(int [] [] mazeState) {

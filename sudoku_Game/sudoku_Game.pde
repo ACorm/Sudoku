@@ -8,7 +8,18 @@ int LOffset=0;
 int DOffset=0;
 boolean win = false;
 
+Cell cell;
+
 void setup() {
+  
+  for (int row=0; row<9; row++) {
+    for (int column=0; column<9; column++) {
+      cell= new Cell(row,column);
+    }
+  }
+  
+  
+  
   background(0);
   size(600, 600);
   squareDire=min(width, height)-200;

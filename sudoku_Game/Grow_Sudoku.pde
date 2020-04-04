@@ -12,7 +12,7 @@ int [] [] growSudoku() {
       int digit=0;
       while (digit==0) {        
         impossibleDigits = new IntList();        
-        impossibleDigits.append(checkDigits(row,column,newNumbers));     
+        impossibleDigits.append(checkDigits(row, column, newNumbers));     
         boolean impossible = true;        
         for (int numberCheck = 1; numberCheck<10; numberCheck++) {
           if (!impossibleDigits.hasValue(numberCheck) && preTriedDigits [row] [column] [numberCheck-1]==0) {
@@ -28,7 +28,7 @@ int [] [] growSudoku() {
           }
           column=column-1+floor((row+9)/10);
           row=(row+8)%9;
-          if(column<0){
+          if (column<0) {
             println("with the rules you currently have selected it is impossible to generate a Sudoku");
             return(null);
           }
@@ -37,6 +37,10 @@ int [] [] growSudoku() {
           preTriedDigits [row] [column] [newNumbers [row] [column]-1] = 1;
           //print(completion + ", ");
           completion--;
+          //background(0);
+          textSize(50);
+          stroke(255);
+          text("." + 100*completion/81, width/2, height/2);
           back=true;
           newNumbers [row] [column]=0;
         } else {
@@ -47,31 +51,14 @@ int [] [] growSudoku() {
           }
         }
       }
-      //print(completion + ", ");
       completion++;
+      //background(0);
+      textSize(50);
+      stroke(255);
+      println("." + 100*completion/81, width/2, height/2);     
       newNumbers [row] [column]=digit;
     }
   }
   println("Done");
   return(newNumbers);
-}
-
-IntList checkDigits(int row, int column, int [] [] mazeState) {
-  IntList list;
-  list=new IntList ();
-  list.append(relativeCheck(row,column,mazeState));
-  list.append(squareCheck(row, column, mazeState));
-  list=removeDups(list);
-  return(list);
-}
-
-IntList removeDups(IntList bufferList) { 
-  IntList list;
-  list = new IntList ();
-  for (int add=0; add<bufferList.size(); add++) {
-    if (!list.hasValue(bufferList.get(add)) && bufferList.get(add)!=0) {
-      list.append(bufferList.get(add));
-    }
-  }
-  return(list);
 }

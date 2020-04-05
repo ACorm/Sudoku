@@ -48,18 +48,18 @@ IntList squareCheck(int column, int row) { //<>//
   return(list);
 }
 
-IntList groupCheck(int column,int row) {
+IntList groupCheck(int column, int row) {
   IntList list;
   list = new IntList();
-      for(int groups=0;groups<sudokuCells [column] [row].groupNumber.size();groups++){
-      for (int columnCheck=0; column<9; column++) {
-        for (int rowCheck=0; row<9; row++) {
-          if(sudokuCells [columnCheck] [rowCheck].groupNumber.hasValue(sudokuCells [column] [row].groupNumber.get(groups))){
-          list.append(sudokuCells [columnCheck] [rowCheck].value);            
-          }
+  for (int groups=0; groups<(sudokuCells [column] [row].groupNumber).size(); groups++) {
+    for (int columnCheck=0; column<9; column++) {
+      for (int rowCheck=0; row<9; row++) {
+        if (sudokuCells [columnCheck] [rowCheck].groupNumber.hasValue(sudokuCells [column] [row].groupNumber.get(groups))) {
+          list.append(sudokuCells [columnCheck] [rowCheck].value);
         }
       }
-      }
+    }
+  }
   return(list);
 }
 

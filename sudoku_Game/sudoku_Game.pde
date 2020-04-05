@@ -25,18 +25,18 @@ void setup() {
   squareDire=min(width, height)-200;
   LOffset = (width-squareDire)/2;
   DOffset = (height-squareDire)/2;
-  sudokuNumbers=growSudoku();
+  growSudoku();
 
-  startingNumbers=sudokuNumbers;
+  //startingNumbers=sudokuNumbers;
 
   //startingNumbers = StartingNumbers.FIRST_PUZZLE_2;
   //startingNumbers=StartingNumbers.EVIL_PUZZLE;
 
-  for (int row=0; row<9; row++) {
-    for (int column=0; column<9; column++) {
-      sudokuGame [row] [column] = startingNumbers [row] [column];
-    }
-  }
+  //for (int row=0; row<9; row++) {
+  //  for (int column=0; column<9; column++) {
+  //    sudokuGame [row] [column] = startingNumbers [row] [column];
+  //  }
+  //}
   rectMode(CENTER);
   textSize(30);
   textAlign(CENTER, CENTER);
@@ -109,7 +109,7 @@ void keyPressed() {
     case(115):
     //s
     println("solving...");
-    sudokuGame=solveSudoku(sudokuGame);
+    //sudokuGame=solveSudoku(sudokuGame);
     break;
     case(-1):
     number=key-48;

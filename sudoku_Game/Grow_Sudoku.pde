@@ -1,16 +1,10 @@
-IntList impossibleDigits; 
-IntList bufferList;
 boolean back = false;
-int [] [] newNumbers = new int [9] [9];
-int [] [] [] preTriedDigits = new int [9] [9] [9];
-int column=0;
-int row=0;
 void growSudoku() {
-  int completion =0;
-  for (column=0; column<9; column++) {
-    for (row=0; row<9; row++) {   
-      sudokuCells [column] [row].checkDigits(newNumbers);
-      while (sudokuCells [column] [row].value==0) {                               
+  //int completion =0;
+  for (int column=0; column<9; column++) {
+    for (int row=0; row<9; row++) {   
+      sudokuCells [column] [row].checkDigits();
+      while (sudokuCells [column] [row].value==0) {             
         if (sudokuCells [column] [row].impossibleValues.size()>8) {
           if (back) {
             sudokuCells [column] [row].impossibleValues.clear();
@@ -39,7 +33,7 @@ void growSudoku() {
             digit=round(random(0.5, 9.5));
           }
           sudokuCells [column] [row].value=digit;
-          completion++;
+          //completion++;
           ////background(0);
           //textSize(50);
           //stroke(255);

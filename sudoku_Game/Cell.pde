@@ -13,22 +13,24 @@ class cell {
   }
 
   void doneSolving(){
-
+    endValue=value;
+    //value=0;
   }
   
   
-  void checkDigits(int [] [] mazeState) {
+  void checkDigits() {
     IntList list;
     list=new IntList ();
-    list.append(relativeCheck(row, column, mazeState));
-    list.append(squareCheck(row, column, mazeState));
-        IntList bufferList = list;
-        for (int add=0; add<bufferList.size(); add++) {
-      if (!list.hasValue(bufferList.get(add)) && bufferList.get(add)!=0) {
-        list.append(bufferList.get(add));
+    list.append(relativeCheck(column, row));
+    list.append(squareCheck(column, row));
+        IntList bufferList;
+        bufferList = new IntList ();
+        for (int add=0; add<list.size(); add++) {
+      if (!bufferList.hasValue(list.get(add)) && list.get(add)!=0) {
+        bufferList.append(list.get(add));
       }
     }
-    impossibleValues=list;    
+    impossibleValues=bufferList;    
   }
 
   void DrawCell() {
@@ -41,7 +43,7 @@ class cell {
     }
     rect(0, 0, squareDire/9.0, squareDire/9.0);
     if (value!=0) {
-      if (startingNumber) {
+      if (starter) {
         fill(255);
       } else {
         fill(155);

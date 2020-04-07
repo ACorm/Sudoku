@@ -1,7 +1,6 @@
-void solveSudoku() { //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
-  IntList finishedGroups;
-  finishedGroups=new IntList();
-  boolean change = true;
+boolean change = true; //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+solveSudoku() {
+  change = true;
   while (change) {
     change = false;
     for (int row=0; row<9; row++) {
@@ -32,7 +31,7 @@ void solveSudoku() { //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<
   //boolean W = true;
   //  for (int row =0; row<9; row++) {
   //    for (int column =0; column<9; column++) {
-  //      if (sudokuState [column] [row]!=sudokuNumbers [column] [row]) {
+  //      if (sudokuCells [column] [row].value!=sudokuCells [column] [row].endValue) {
   //        W = false;
   //        break;
   //      }
@@ -41,7 +40,9 @@ void solveSudoku() { //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<
   //      break;
   //    }
   //  }  
-  //return(sudokuState);
+  ////return(sudokuState);
+  
+  //return(W);
 }
 
 
@@ -94,6 +95,7 @@ void group() {
                 if (sudokuCells [columnCheck] [rowCheck].groupNumber.hasValue(groups)) {
                   if (sudokuCells [columnCheck] [rowCheck].value==0 && !sudokuCells [columnCheck] [rowCheck].impossibleValues.hasValue(value+1)) {
                     sudokuCells [columnCheck] [rowCheck].value=value+1;
+                    change=true;
                   }
                 }
               }

@@ -31,8 +31,8 @@ void setup() {
 
   //startingNumbers=sudokuNumbers;
 
-  startingNumbers = StartingNumbers.FIRST_PUZZLE_2;
-  //startingNumbers=StartingNumbers.EVIL_PUZZLE;
+  //startingNumbers = StartingNumbers.FIRST_PUZZLE_2;
+  startingNumbers=StartingNumbers.EVIL_PUZZLE;
 
   for (int row=0; row<9; row++) {
     for (int column=0; column<9; column++) {

@@ -11,7 +11,7 @@ void complicateSudoku() {
     boolean possible=false;
     for (int row=0;row<9;row++) {
       for (int column=0;column<9;column++) {
-        if(impossibleSquare [randX] [randY]==0){
+        if(impossibleSquare [column] [row]==0){
           possible=true;
         }
       }
@@ -25,13 +25,13 @@ void complicateSudoku() {
     }
     sudokuCells [randX] [randY].value=0;
     setSudokuState();
-    if (solveSudoku()) {
+    if (solveSudoku(false)) {
       setCellState();
       totalStartingValues--;
       impossibleSquare=new int [9] [9];
     } else {
       setCellState();
-      sudokuCells [randX] [randY].value=0;
+      sudokuCells [randX] [randY].value=sudokuCells [randX] [randY].endValue;
       impossibleSquare [randX] [randY]=1;
     }
   }

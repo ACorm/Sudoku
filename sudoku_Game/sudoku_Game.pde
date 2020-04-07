@@ -22,14 +22,14 @@ void setup() {
 
 
   background(0);
-  size(600, 600);
+  fullScreen();
   squareDire=min(width, height)-200;
   LOffset = (width-squareDire)/2;
   DOffset = (height-squareDire)/2;
   if (!custom) {
     growSudoku();
   } else {
-    int [] [] startingNumbers = StartingNumbers.TOUGH_PUZZLE;
+    int [] [] startingNumbers = StartingNumbers.EVIL_PUZZLE;
     for (int row=0; row<9; row++) {
       for (int column=0; column<9; column++) {
         sudokuCells [row] [8-column].value = startingNumbers [column] [row];
@@ -131,11 +131,11 @@ void keyPressed() {
     }
     println("};");       
     break;
-    //case(115):
-    ////s
-    //println("solving...");
-    ////solveSudoku();
-    //break;
+    case('h'):
+    //h
+    println("hint");
+    solveSudoku(true);
+    break;
     case(-1):
     number=key-48;
     break;

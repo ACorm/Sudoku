@@ -3,7 +3,7 @@ class cell {
   int column;
   int value;
   int endValue;
-  IntList impossibleValues;
+  IntList impossibleValues = new IntList ();
   boolean highlighted = false;
   boolean starter = false;
   IntList groupNumber;

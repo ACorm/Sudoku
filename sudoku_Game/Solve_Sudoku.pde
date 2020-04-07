@@ -1,5 +1,5 @@
 boolean change = true; //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
-solveSudoku() {
+boolean solveSudoku() {
   change = true;
   while (change) {
     change = false;
@@ -25,24 +25,19 @@ solveSudoku() {
     group();
   }
 
-
-
-
-  //boolean W = true;
-  //  for (int row =0; row<9; row++) {
-  //    for (int column =0; column<9; column++) {
-  //      if (sudokuCells [column] [row].value!=sudokuCells [column] [row].endValue) {
-  //        W = false;
-  //        break;
-  //      }
-  //    }
-  //    if (!W) {
-  //      break;
-  //    }
-  //  }  
-  ////return(sudokuState);
-  
-  //return(W);
+  boolean W = true;
+    for (int row =0; row<9; row++) {
+      for (int column =0; column<9; column++) {
+        if (sudokuCells [column] [row].value!=sudokuCells [column] [row].endValue) {
+          W = false;
+          break;
+        }
+      }
+      if (!W) {
+        break;
+      }
+    }    
+  return(W);
 }
 
 
@@ -108,38 +103,3 @@ void group() {
     }
   }
 }
-
-
-//void squareElim() {
-//  for (int SquareX=0; SquareX<3; SquareX++) {
-//    for (int SquareY=0; SquareY<3; SquareY++) {
-//    nextValue:
-//      for (int value=0; value<9; value++) {         
-//        int possible = 0;
-//        int [] [] possibilities = new int [3] [3];  
-//        for (int row=0; row<3; row++) {
-//          for (int column=0; column<3; column++) {                     
-//            if (sudokuState [SquareX*3+column] [SquareY*3+row]==value+1) {
-//              continue nextValue;
-//            } else if (sudokuState [SquareX*3+column] [SquareY*3+row]==0) {                                 
-//              if (impossibleNumbers [SquareX*3+column] [SquareY*3+row] [value]==0) {
-//                possibilities [column] [row] = 1;
-//                possible++;
-//              }
-//            }
-//          }
-//        }        
-//        if (possible==1) {
-//          for (int row=0; row<3; row++) {
-//            for (int column=0; column<3; column++) {
-//              if (possibilities [column] [row]==1) {
-//                change=true;
-//                sudokuState [SquareX*3+column] [SquareY*3+row]=value+1;
-//              }
-//            }
-//          }
-//        }
-//      }
-//    }
-//  }
-//}

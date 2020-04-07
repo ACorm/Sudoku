@@ -23,10 +23,15 @@ class cell {
     }
   }
 
-  void doneSolving() {
+  void doneGrowing() {
     endValue=value;
   }
 
+void doneComplicating(){
+  if(value!=0){
+    starter=true;
+  }
+}
 
   void checkDigits() {
     IntList list;

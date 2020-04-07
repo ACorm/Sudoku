@@ -114,7 +114,7 @@ void keyPressed() {
     case(115):
     //s
     println("solving...");
-    solveSudoku();
+    //solveSudoku();
     break;
     case(-1):
     number=key-48;

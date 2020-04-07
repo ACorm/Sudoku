@@ -37,7 +37,6 @@ void doneComplicating(){
     IntList list;
     list=new IntList ();
     //list.append(relativeCheck(column, row));
-    //list.append(squareCheck(column, row));
     list.append(groupCheck(column,row));
     IntList bufferList;
     bufferList = new IntList ();
@@ -57,6 +56,7 @@ void doneComplicating(){
     } else {
       fill(0);
     }
+    stroke(120);
     rect(0, 0, squareDire/9.0, squareDire/9.0);
     if (value!=0) {
       if (starter) {

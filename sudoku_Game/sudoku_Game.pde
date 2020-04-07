@@ -1,13 +1,12 @@
 int [] [] sudokuNumbers = new int [9] [9];
 int [] [] sudokuGame = new int [9] [9];
-int [] [] startingNumbers = new int [9] [9];
 int [] [] highlightedSquare = new int [9] [9];
 int highlightColor = color(200, 0, 0);
 int squareDire = 0;
 int LOffset=0;
 int DOffset=0;
 boolean win = false;
-
+boolean custom=true;
 
 cell [] [] sudokuCells;
 
@@ -15,7 +14,7 @@ void setup() {
   sudokuCells = new cell [9] [9];
   for (int row=0; row<9; row++) {
     for (int column=0; column<9; column++) {
-      sudokuCells [column] [row] = new cell(column,row);      
+      sudokuCells [column] [row] = new cell(column, row);      
       //print(column + ",");
     }
     //print(row + ",");
@@ -27,21 +26,20 @@ void setup() {
   squareDire=min(width, height)-200;
   LOffset = (width-squareDire)/2;
   DOffset = (height-squareDire)/2;
-  growSudoku();
-
-  //startingNumbers=sudokuNumbers;
-
-  //startingNumbers = StartingNumbers.FIRST_PUZZLE_2;
-  startingNumbers=StartingNumbers.EVIL_PUZZLE;
-
-  for (int row=0; row<9; row++) {
-    for (int column=0; column<9; column++) {
-      sudokuCells [row] [column].value = startingNumbers [row] [column];
-      if(startingNumbers [row] [column]!=0){
-      sudokuCells [row] [column].starter=true;
+  if (!custom) {
+    growSudoku();
+  } else {
+    int [] [] startingNumbers = StartingNumbers.TOUGH_PUZZLE;
+    for (int row=0; row<9; row++) {
+      for (int column=0; column<9; column++) {
+        sudokuCells [row] [8-column].value = startingNumbers [column] [row];
+        if (startingNumbers [column] [row]!=0) {
+          sudokuCells [row] [8-column].starter=true;
+        }
       }
     }
   }
+
   rectMode(CENTER);
   textSize(30);
   textAlign(CENTER, CENTER);
@@ -53,10 +51,20 @@ void draw() {
     background(0);
   } else {
     background(200);
-  }
+  }  
   for (int column=0; column<9; column++) {
     for (int row=0; row<9; row++) {
       sudokuCells [column] [row].DrawCell();
+    }
+  }
+  noFill();
+  for (int squareX=0; squareX<3; squareX++) {
+    for (int squareY=0; squareY<3; squareY++) {
+      pushMatrix();
+      translate(squareDire/9.0*((3*squareX+1)+0.5)+LOffset, squareDire-squareDire/9.0*((3*squareY+1)+0.5)+DOffset);
+      stroke(255);
+      rect(0, 0, 3*squareDire/9.0, 3*squareDire/9.0);
+      popMatrix();
     }
   }
 }
@@ -111,17 +119,17 @@ void keyPressed() {
     }
     win=W;
     break;
-    case(115):
-    //s
-    println("solving...");
-    //solveSudoku();
-    break;
+    //case(115):
+    ////s
+    //println("solving...");
+    ////solveSudoku();
+    //break;
     case(-1):
     number=key-48;
     break;
-  default:
-    println(int(key));
-    break;
+    //default:
+    //  println(int(key));
+    //  break;
   }
   if (number!=-1) {
     for (int row =0; row<9; row++) {

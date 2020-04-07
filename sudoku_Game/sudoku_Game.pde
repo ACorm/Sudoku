@@ -6,7 +6,7 @@ int squareDire = 0;
 int LOffset=0;
 int DOffset=0;
 boolean win = false;
-boolean custom=true;
+boolean custom=false;
 
 cell [] [] sudokuCells;
 
@@ -119,6 +119,18 @@ void keyPressed() {
     }
     win=W;
     break;
+    case('p'):
+    println("//Sudoku Name");
+    println("public static final int[][] NAME = new int [] []{");
+    for(cell [] column:sudokuCells){
+      print("{");
+      for(cell row:column){
+         print(row.value + ",");
+      }
+      println("}"+",");
+    }
+    println("};");       
+    break;
     //case(115):
     ////s
     //println("solving...");
@@ -127,9 +139,9 @@ void keyPressed() {
     case(-1):
     number=key-48;
     break;
-    //default:
-    //  println(int(key));
-    //  break;
+    default:
+    println(int(key));
+    break;
   }
   if (number!=-1) {
     for (int row =0; row<9; row++) {

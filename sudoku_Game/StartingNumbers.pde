@@ -47,6 +47,7 @@ public static final class StartingNumbers {
     {0, 0, 0, 0, 4, 8, 0, 0, 0}
   };
   
+  
   public static final int[][] FIRST_PUZZLE_2 = parseString("005029000"+ 
                                                            "374000020"+ 
                                                            "900370005"+ 

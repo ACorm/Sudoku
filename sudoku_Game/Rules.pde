@@ -34,24 +34,7 @@ IntList relativeCheck(int column, int row) {
   return(list);
 }
 
-IntList squareCheck(int column, int row) { //<>//
-  IntList list;
-  list = new IntList ();
-  if (blocks) {
-    for (int squareCheck=0; squareCheck<9; squareCheck++) {
-      int valueCheck = sudokuCells [((squareCheck)/3)+3*(column/3)] [(squareCheck)%3+3*(row/3)].value;
-      if (valueCheck!=0) {
-        list.append(valueCheck);
-      }
-    }
-  }
-  return(list);
-}
-
-IntList groupCheck(int column, int row) {
-  println(); //<>//
-  println(column);
-  println(row);
+IntList groupCheck(int column, int row) { //<>// //<>//
   IntList list;
   list = new IntList();
   for (int groups=0; groups<sudokuCells [column] [row].groupNumber.size(); groups++) {

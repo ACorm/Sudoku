@@ -28,7 +28,6 @@ void growSudoku() {
         } else {
           back=false;
           int digit=round(random(0.5, 9.5));
-          ;
           while (sudokuCells [column] [row].impossibleValues.hasValue(digit)) {
             digit=round(random(0.5, 9.5));
           }

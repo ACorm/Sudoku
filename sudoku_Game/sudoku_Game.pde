@@ -31,14 +31,17 @@ void setup() {
 
   //startingNumbers=sudokuNumbers;
 
-  //startingNumbers = StartingNumbers.FIRST_PUZZLE_2;
+  startingNumbers = StartingNumbers.FIRST_PUZZLE_2;
   //startingNumbers=StartingNumbers.EVIL_PUZZLE;
 
-  //for (int row=0; row<9; row++) {
-  //  for (int column=0; column<9; column++) {
-  //    sudokuGame [row] [column] = startingNumbers [row] [column];
-  //  }
-  //}
+  for (int row=0; row<9; row++) {
+    for (int column=0; column<9; column++) {
+      sudokuCells [row] [column].value = startingNumbers [row] [column];
+      if(startingNumbers [row] [column]!=0){
+      sudokuCells [row] [column].starter=true;
+      }
+    }
+  }
   rectMode(CENTER);
   textSize(30);
   textAlign(CENTER, CENTER);
@@ -111,7 +114,7 @@ void keyPressed() {
     case(115):
     //s
     println("solving...");
-    //sudokuGame=solveSudoku(sudokuGame);
+    solveSudoku();
     break;
     case(-1):
     number=key-48;

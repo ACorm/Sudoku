@@ -15,10 +15,10 @@ void setup() {
   sudokuCells = new cell [9] [9];
   for (int row=0; row<9; row++) {
     for (int column=0; column<9; column++) {
-      sudokuCells [column] [row] = new cell(row, column);      
-      print(column + ",");
+      sudokuCells [column] [row] = new cell(column,row);      
+      //print(column + ",");
     }
-    print(row + ",");
+    //print(row + ",");
   }
 
 

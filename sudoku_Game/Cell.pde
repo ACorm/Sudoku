@@ -8,7 +8,7 @@ class cell {
   boolean starter = false;
   IntList groupNumber;
 
-  cell(int tempRow, int tempColumn) {
+  cell(int tempColumn, int tempRow) {
     groupNumber=new IntList ();
     row=tempRow;
     column=tempColumn;
@@ -25,7 +25,6 @@ class cell {
 
   void doneSolving() {
     endValue=value;
-    //value=0;
   }
 
 

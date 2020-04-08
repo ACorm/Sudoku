@@ -6,7 +6,7 @@ int squareDire = 0;
 int LOffset=0;
 int DOffset=0;
 boolean win = false;
-boolean custom=false;
+boolean custom=true;
 
 cell [] [] sudokuCells;
 
@@ -14,13 +14,9 @@ void setup() {
   sudokuCells = new cell [9] [9];
   for (int row=0; row<9; row++) {
     for (int column=0; column<9; column++) {
-      sudokuCells [column] [row] = new cell(column, row);      
-      //print(column + ",");
+      sudokuCells [column] [row] = new cell(column, row);
     }
-    //print(row + ",");
   }
-
-
   background(0);
   fullScreen();
   squareDire=min(width, height)-200;
@@ -29,7 +25,7 @@ void setup() {
   if (!custom) {
     growSudoku();
   } else {
-    int [] [] startingNumbers = StartingNumbers.EVIL_PUZZLE;
+    int [] [] startingNumbers = StartingNumbers.FIRST_PUZZLE;
     for (int row=0; row<9; row++) {
       for (int column=0; column<9; column++) {
         sudokuCells [row] [8-column].value = startingNumbers [column] [row];
@@ -38,8 +34,16 @@ void setup() {
         }
       }
     }
+    solveSudoku(false);
+    for (int row=0; row<9; row++) {
+      for (int column=0; column<9; column++) {
+        sudokuCells [row] [8-column].doneGrowing();
+        if (!sudokuCells [row] [8-column].starter) {
+          sudokuCells [row] [8-column].value=0;
+        }
+      }
+    }
   }
-
   rectMode(CENTER);
   textSize(30);
   textAlign(CENTER, CENTER);
@@ -122,10 +126,14 @@ void keyPressed() {
     case('p'):
     println("//Sudoku Name");
     println("public static final int[][] NAME = new int [] []{");
-    for(cell [] column:sudokuCells){
+    for (cell [] column : sudokuCells) {
       print("{");
-      for(cell row:column){
-         print(row.value + ",");
+      for (cell row : column) {
+        if(row.starter){
+        print(row.value + ",");
+        }else{
+        print(0 + ",");
+        }
       }
       println("}"+",");
     }
@@ -139,7 +147,7 @@ void keyPressed() {
     case(-1):
     number=key-48;
     break;
-    default:
+  default:
     println(int(key));
     break;
   }

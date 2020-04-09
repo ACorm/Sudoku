@@ -11,8 +11,8 @@ cell [] [] sudokuCells;
 void setup() {
   drawState=0;
   background(0);
-  size(600, 600); 
-  //fullScreen();
+  //size(600, 600); 
+  fullScreen();
   rectMode(CENTER);
   textSize(30);
   textAlign(CENTER, CENTER);
@@ -31,11 +31,10 @@ void settingUp() {
   if (!custom) {
     growSudoku();
   } else {
-    int [] [] startingNumbers = StartingNumbers.FIRST_PUZZLE;
     for (int row=0; row<9; row++) {
       for (int column=0; column<9; column++) {
-        sudokuCells [row] [8-column].value = startingNumbers [column] [row];
-        if (startingNumbers [column] [row]!=0) {
+        sudokuCells [row] [8-column].value = sudokuNumbers [column] [row];
+        if (sudokuNumbers [column] [row]!=0) {
           sudokuCells [row] [8-column].starter=true;
         }
       }

@@ -1,10 +1,49 @@
-public static final class StartingNumbers {    
-  
-  public static final String [] Names= new String []{
-    "EVIL PUZZLE",
-    "FIRST PUZZLE",          
+//Put in a saved sudokus name
+public static final String [] Names= new String []{
+  "EVIL PUZZLE", 
+  "FIRST PUZZLE", 
+  "Hard"
+
+
+};
+
+int [] [] sudoku(int sudokuNumber) {
+  int [] [] sudokuState=new int [9] [9];
+  switch(sudokuNumber) {
+    //put in the coresponding box a reference to the sudoku
+    case(1):
+    sudokuState=StartingNumbers.EVIL_PUZZLE;
+    break;
+    case(2):
+    sudokuState=StartingNumbers.FIRST_PUZZLE;
+    break;
+    case(3):
+    sudokuState=StartingNumbers.Hard;
+    break;
+    case(4):
+    //sudokuState=;
+    break;
+    case(5):
+    //sudokuState=;
+    break;
+  }
+  return(sudokuState);
+}
+
+public static final class StartingNumbers {
+  //Sudoku Hard
+  public static final int[][] Hard = new int [] []{
+    {0, 5, 0, 0, 8, 0, 3, 0, 4, }, 
+    {0, 0, 0, 0, 1, 0, 0, 0, 0, }, 
+    {0, 6, 7, 0, 0, 0, 0, 0, 0, }, 
+    {0, 0, 0, 0, 4, 1, 0, 0, 2, }, 
+    {0, 0, 1, 9, 0, 0, 8, 0, 7, }, 
+    {0, 4, 0, 0, 2, 0, 0, 5, 0, }, 
+    {0, 3, 8, 0, 7, 0, 2, 6, 0, }, 
+    {4, 1, 0, 3, 0, 0, 7, 8, 0, }, 
+    {2, 0, 0, 0, 0, 5, 0, 0, 0, }, 
   };
-  
+
   public static final int[][] BLANK_PUZZLE = new int [] []{
     {0, 0, 0, 0, 0, 0, 0, 0, 0}, //0
     {0, 0, 0, 0, 0, 0, 0, 0, 0}, //1

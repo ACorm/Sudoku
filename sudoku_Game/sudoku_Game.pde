@@ -197,7 +197,7 @@ void keyReleased() {
     if (number!=-1) {
       for (int row =0; row<9; row++) {
         for (int column =0; column<9; column++) {
-          if (sudokuCells [column] [row].highlighted && sudokuCells [column] [row].starter==false) {
+          if (sudokuCells [column] [row].highlighted && sudokuCells [column] [row].starter==false && sudokuCells [column] [row].hint==false) {
             sudokuCells [column] [row].value = number;
           }
         }

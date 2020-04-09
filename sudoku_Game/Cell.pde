@@ -7,6 +7,7 @@ class cell {
   boolean highlighted = false;
   boolean starter = false;
   IntList groupNumber;
+  boolean hint;
 
   cell(int tempColumn, int tempRow) {
     groupNumber=new IntList ();
@@ -62,7 +63,11 @@ class cell {
       if (starter) {
         fill(255);
       } else {
+        if(hint){
+          fill(200,50,10);
+        }else{
         fill(155);
+        }
       }
       text(value, 0, 0);
     }

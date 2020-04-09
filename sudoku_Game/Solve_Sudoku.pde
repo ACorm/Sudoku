@@ -13,7 +13,7 @@ boolean solveSudoku(boolean hint,boolean solve) {
                 change=true;                
                 sudokuCells [column] [row].value = value+1;
                 if (hint) {
-                  sudokuCells [column] [row].starter=true;
+                  sudokuCells [column] [row].hint=true;
                   return(false);
                 }
               }
@@ -77,7 +77,7 @@ boolean solveSudoku(boolean hint,boolean solve) {
                       sudokuCells [columnCheck] [rowCheck].value=value+1;
                       change=true;
                       if (hint) {
-                        sudokuCells [columnCheck] [rowCheck].starter=true;
+                        sudokuCells [columnCheck] [rowCheck].hint=true;
                         return(false);
                       }
                     }

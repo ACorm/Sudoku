@@ -6,9 +6,16 @@ int DOffset=0;
 boolean win = false;
 boolean custom=false;
 int drawState;
+float secondsO=0;
+int secondsT=0;
+int minutesO=0;
+int minutesT=0;
+int hours=0;
+int hints=0;
 
 cell [] [] sudokuCells;
 void setup() {
+  frameRate(60);
   drawState=0;
   background(0);
   //size(600, 600); 
@@ -22,7 +29,13 @@ void setup() {
 }
 
 void settingUp() {
-   sudokuCells = new cell [9] [9];
+  hints=0;
+  secondsO=0;
+  secondsT=0;
+  minutesO=0;
+  minutesT=0;
+  hours=0;
+  sudokuCells = new cell [9] [9];
   for (int row=0; row<9; row++) {
     for (int column=0; column<9; column++) {
       sudokuCells [column] [row] = new cell(column, row);
@@ -39,7 +52,7 @@ void settingUp() {
         }
       }
     }
-    solveSudoku(false,true);
+    solveSudoku(false, true);
     for (int row=0; row<9; row++) {
       for (int column=0; column<9; column++) {
         sudokuCells [row] [8-column].doneGrowing();
@@ -76,6 +89,25 @@ void draw() {
 
 void DrawBoard() {
   background(0);
+  fill(255);
+  secondsO+=1/frameRate;
+  if (secondsO>=10) {
+    secondsO=0;
+    secondsT++;
+  }
+  if (secondsT>=6) {
+    secondsT=0;
+    minutesO++;
+  }
+  if (minutesO>=10) {
+    minutesO=0;
+    minutesT++;
+  }
+  if (minutesT>=6) {
+    minutesT=0;
+    hours++;
+  }
+  text(hours+":"+minutesT + "" +minutesO + ":" + secondsT + "" + int(secondsO), width/10, height/10);
   for (int column=0; column<9; column++) {
     for (int row=0; row<9; row++) {
       sudokuCells [column] [row].DrawCell();
@@ -148,10 +180,10 @@ void keyReleased() {
       }
       win=W;
       break;
-      case('h'):
-      //h
-      //println("hint");
-      solveSudoku(true,false);
+      case('h'):   
+      if(!solveSudoku(true, false)){
+        hints++;
+      }
       break;
       case('s'):
       //s

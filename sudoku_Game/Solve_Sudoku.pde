@@ -13,6 +13,7 @@ boolean solveSudoku(boolean hint,boolean solve) {
                 change=true;                
                 sudokuCells [column] [row].value = value+1;
                 if (hint) {
+                  sudokuCells [column] [row].starter=true;
                   return(false);
                 }
               }
@@ -76,6 +77,7 @@ boolean solveSudoku(boolean hint,boolean solve) {
                       sudokuCells [columnCheck] [rowCheck].value=value+1;
                       change=true;
                       if (hint) {
+                        sudokuCells [columnCheck] [rowCheck].starter=true;
                         return(false);
                       }
                     }
@@ -90,7 +92,9 @@ boolean solveSudoku(boolean hint,boolean solve) {
       }
     }
   }
-
+if(hint){
+  return(true);
+}
   for (int row =0; row<9; row++) {
     for (int column =0; column<9; column++) {
       if (sudokuCells [column] [row].value!=sudokuCells [column] [row].endValue) {

@@ -7,7 +7,8 @@ void Win() {
   background(0);
   fill(255);
   text("You Win", width/2, height/2-2.3*height/9);
-
+  text("Your Time Was: " + hours+":"+minutesT + "" +minutesO + ":" + secondsT + "" + int(secondsO), width/2, height/2-1.8*height/9);
+  text("You Used " + hints + " Hints", width/2, height/2-1.3*height/9);
   fill(200, 0, 0);
   rect(width/2, height/2, width/2, height/9);
   fill(255);

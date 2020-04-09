@@ -15,13 +15,16 @@ void DrawSelection() {
     text("Pre Made Sudoku",width/2, height/2+1.7*height/9);
     break;
     case(1):
-    for (int i =0; i<10; i++) {
+    for (int customN =0; customN<StartingNumbers.Names.length; customN++) {
+      fill(0,0,200);
+      rect(width/2, height/2-(1-2*customN)*1.7*height/9+scroll, width/2, height/9);
       fill(255);
-      rect(width/2, height/2-(1-2*i)*1.7*height/9+scroll, width/2, height/9);
+      text(StartingNumbers.Names [customN],width/2, height/2-(1-2*customN)*1.7*height/9+scroll);
     }
     break;
   }
 }
+
 
 void Loading() {
   background(0);
@@ -39,8 +42,8 @@ void mouseWheel(MouseEvent event) {
   if (scroll>=0) {
     scroll=0;
   }
-  if (scroll<=height/2+(1-2*10)*1.7*height/9) {
-    scroll=int(height/2+(1-2*10)*1.7*height/9);
+  if (scroll<=(4-2*StartingNumbers.Names.length)*1.7*height/9) {
+    scroll=int((4-2*StartingNumbers.Names.length)*1.7*height/9);
   }
 }
 
@@ -61,9 +64,12 @@ void mouseClicked() {
     }
     break;
     case(1):
+    for(int customN =0; customN<StartingNumbers.Names.length; customN++){
+      if(inBox(width/2, height/2-(1-2*customN)*1.7*height/9+scroll, width/2, height/9)){
     selectionMenu=2; 
     drawState=1;
-
+      }
+    }
     break;
   default:
     break;

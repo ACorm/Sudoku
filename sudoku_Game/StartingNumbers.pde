@@ -1,4 +1,10 @@
-public static final class StartingNumbers {
+public static final class StartingNumbers {    
+  
+  public static final String [] Names= new String []{
+    "EVIL PUZZLE",
+    "FIRST PUZZLE",          
+  };
+  
   public static final int[][] BLANK_PUZZLE = new int [] []{
     {0, 0, 0, 0, 0, 0, 0, 0, 0}, //0
     {0, 0, 0, 0, 0, 0, 0, 0, 0}, //1
@@ -35,7 +41,8 @@ public static final class StartingNumbers {
     {5, 0, 1, 0, 0, 0, 6, 7, 2}
   };
 
-  public static final int[][] FIRST_PUZZLE_2 = parseString("005029000"+ 
+  public static final int[][] FIRST_PUZZLE_2 = parseString(
+    "005029000"+ 
     "374000020"+ 
     "900370005"+ 
     "090030000"+ 

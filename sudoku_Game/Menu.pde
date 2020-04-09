@@ -6,9 +6,13 @@ void DrawSelection() {
   switch(selectionMenu) {
     case(0):
     fill(200, 0, 0);
-    rect(width/2, height/2+1.7*height/9, width/2, height/9);
-    fill(200, 0, 0);
     rect(width/2, height/2-1.7*height/9, width/2, height/9);
+    fill(255);
+    text("New Sudoku",width/2, height/2-1.7*height/9);
+    fill(200, 0, 0);
+    rect(width/2, height/2+1.7*height/9, width/2, height/9);
+    fill(255);
+    text("Pre Made Sudoku",width/2, height/2+1.7*height/9);
     break;
     case(1):
     for (int i =0; i<10; i++) {
@@ -43,13 +47,13 @@ void mouseWheel(MouseEvent event) {
 void mouseClicked() {
   switch(selectionMenu) {
     case(0):
-    if (inBox(width/2, height/2+1.7*height/9, width/2, height/9)) {
+    if (inBox(width/2, height/2-1.7*height/9, width/2, height/9)) {
       selectionMenu=2; 
       drawState=1;
       Loading();
       scroll=0;
     } else {
-      if (inBox(width/2, height/2-1.7*height/9, width/2, height/9)) {
+      if (inBox(width/2, height/2+1.7*height/9, width/2, height/9)) {
         selectionMenu=1;
         custom=true;
         scroll=0;

@@ -1,6 +1,6 @@
 boolean back = false;
 void growSudoku() {
-  //int completion =0;
+  int completion =0;
   for (int column=0; column<9; column++) {
     for (int row=0; row<9; row++) {   
       sudokuCells [column] [row].checkDigits();
@@ -13,12 +13,13 @@ void growSudoku() {
           row=(row+8)%9;
           if (column<0) {
             println("with the rules you currently have selected it is impossible to generate a Sudoku");
+            return;
           }
           if (!sudokuCells [column] [row].impossibleValues.hasValue(sudokuCells [column] [row].value)) {
-            sudokuCells [column] [row].impossibleValues.append(sudokuCells [column] [row].value);
+            sudokuCells [column] [row].impossibleValues.append(sudokuCells [column] [row].value);          
           }          
           ////print(completion + ", ");
-          //completion--;
+          completion--;
           ////background(0);
           //textSize(50);
           //stroke(255);
@@ -32,20 +33,22 @@ void growSudoku() {
             digit=round(random(0.5, 9.5));
           }
           sudokuCells [column] [row].value=digit;
-          //completion++;
+          completion++;
           ////background(0);
           //textSize(50);
           //stroke(255);
           //println("." + 100*completion/81, width/2, height/2);
         }
+        println(100*completion/81 +"%");
       }
     }
   }
-  println("Done");
+  println("Done Growing");
   for(int column=0;column<9;column++){
     for(int row=0;row<9;row++){
       sudokuCells [column] [row].doneGrowing();
     }
   }
+  println("Complicating");
   complicateSudoku();
 }

@@ -1,4 +1,4 @@
-boolean change = true; //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+boolean change = true;
 boolean solveSudoku(boolean hint) {
   change = true;
   while (change) {
@@ -20,6 +20,7 @@ boolean solveSudoku(boolean hint) {
           } else {
             if (sudokuCells [column] [row].impossibleValues.size()==9) {
               println("while trying to solve the sudoku the program realised it is impossible");
+              return(false);
             }
           }
         }

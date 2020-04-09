@@ -32,9 +32,9 @@
 //  return(list);
 //}
 
-IntList groupCheck(int column, int row) { //<>//
+IntList groupCheck(int column, int row) {
   IntList list;
-  list = new IntList(); //<>//
+  list = new IntList();
   for (int groups=0; groups<sudokuCells [column] [row].groupNumber.size(); groups++) {
     for (int columnCheck=0; columnCheck<9; columnCheck++) {
       for (int rowCheck=0; rowCheck<9; rowCheck++) {        

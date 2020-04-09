@@ -9,33 +9,33 @@ void complicateSudoku() {
     int randX=round(random(-0.5, 8.5));
     int randY=round(random(-0.5, 8.5));
     boolean possible=false;
-    for (int row=0;row<9;row++) {
-      for (int column=0;column<9;column++) {
-        if(impossibleSquare [column] [row]==0){
+    for (int row=0; row<9; row++) {
+      for (int column=0; column<9; column++) {
+        if (impossibleSquare [column] [row]==0) {
           possible=true;
         }
       }
     }
-    if(!possible){
+    if (!possible) {
       break;
     }    
     while (impossibleSquare [randX] [randY]==1) {
       randX=round(random(-0.5, 8.5));
       randY=round(random(-0.5, 8.5));
     }
-    sudokuCells [randX] [randY].value=0;
     setSudokuState();
+    sudokuCells [randX] [randY].value=0;    
     if (solveSudoku(false)) {
       setCellState();
+      sudokuCells [randX] [randY].value=0; 
       totalStartingValues--;
       impossibleSquare=new int [9] [9];
     } else {
       setCellState();
-      sudokuCells [randX] [randY].value=sudokuCells [randX] [randY].endValue;
       impossibleSquare [randX] [randY]=1;
     }
   }
-  
+
   for (int row=0; row<9; row++) {
     for (int column=0; column<9; column++) {
       sudokuCells [column] [row].doneComplicating();

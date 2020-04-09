@@ -27,17 +27,17 @@ class cell {
     endValue=value;
   }
 
-void doneComplicating(){
-  if(value!=0){
-    starter=true;
+  void doneComplicating() {
+    if (value!=0) {
+      starter=true;
+    }
   }
-}
 
   void checkDigits() {
     IntList list;
     list=new IntList ();
     //list.append(relativeCheck(column, row));
-    list.append(groupCheck(column,row));
+    list.append(groupCheck(column, row));
     IntList bufferList;
     bufferList = new IntList ();
     for (int add=0; add<list.size(); add++) {

@@ -39,16 +39,16 @@ void growSudoku() {
           //stroke(255);
           //println("." + 100*completion/81, width/2, height/2);
         }
-        println(100*completion/81 +"%");
+        //println(100*completion/81 +"%");
       }
     }
   }
-  println("Done Growing");
+  //println("Done Growing");
   for(int column=0;column<9;column++){
     for(int row=0;row<9;row++){
       sudokuCells [column] [row].doneGrowing();
     }
   }
-  println("Complicating");
+  //println("Complicating");
   complicateSudoku();
 }

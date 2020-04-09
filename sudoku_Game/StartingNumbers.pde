@@ -1,6 +1,6 @@
 //Put in a saved sudokus name
 public static final String [] Names= new String []{
-  "EVIL PUZZLE", 
+  //"EVIL PUZZLE", 
   "FIRST PUZZLE", 
   "Hard"
 
@@ -9,10 +9,10 @@ public static final String [] Names= new String []{
 
 int [] [] sudoku(int sudokuNumber) {
   int [] [] sudokuState=new int [9] [9];
-  switch(sudokuNumber) {
+  switch(sudokuNumber+1) {
     //put in the coresponding box a reference to the sudoku
     case(1):
-    sudokuState=StartingNumbers.EVIL_PUZZLE;
+    //sudokuState=StartingNumbers.EVIL_PUZZLE;
     break;
     case(2):
     sudokuState=StartingNumbers.FIRST_PUZZLE;

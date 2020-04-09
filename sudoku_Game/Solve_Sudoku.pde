@@ -1,5 +1,5 @@
 boolean change = true;
-boolean solveSudoku(boolean hint) {
+boolean solveSudoku(boolean hint,boolean solve) {
   change = true;
   while (change) {
     change = false;
@@ -94,7 +94,11 @@ boolean solveSudoku(boolean hint) {
   for (int row =0; row<9; row++) {
     for (int column =0; column<9; column++) {
       if (sudokuCells [column] [row].value!=sudokuCells [column] [row].endValue) {
+        if(!solve){
         return(false);
+        }else{
+          sudokuCells [column] [row].endValue=sudokuCells [column] [row].value;
+        }
       }
     }
   }    

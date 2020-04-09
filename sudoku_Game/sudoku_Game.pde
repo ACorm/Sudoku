@@ -16,18 +16,18 @@ void setup() {
   rectMode(CENTER);
   textSize(30);
   textAlign(CENTER, CENTER);
-  sudokuCells = new cell [9] [9];
-  for (int row=0; row<9; row++) {
-    for (int column=0; column<9; column++) {
-      sudokuCells [column] [row] = new cell(column, row);
-    }
-  } 
   squareDire=min(width, height)-200;
   LOffset = (width-squareDire)/2;
   DOffset = (height-squareDire)/2;
 }
 
 void settingUp() {
+   sudokuCells = new cell [9] [9];
+  for (int row=0; row<9; row++) {
+    for (int column=0; column<9; column++) {
+      sudokuCells [column] [row] = new cell(column, row);
+    }
+  } 
   if (!custom) {
     growSudoku();
   } else {
@@ -39,7 +39,7 @@ void settingUp() {
         }
       }
     }
-    solveSudoku(false);
+    solveSudoku(false,true);
     for (int row=0; row<9; row++) {
       for (int column=0; column<9; column++) {
         sudokuCells [row] [8-column].doneGrowing();
@@ -65,10 +65,11 @@ void draw() {
     DrawBoard();
     if (win) {
       drawState=3;
+      win=false;
     }
     break;
     case(3):
-
+    Win();
     break;
   }
 }
@@ -119,7 +120,7 @@ void mousePressed() {
   }
 }
 
-void keyPressed() {
+void keyReleased() {
   if (drawState==2) {
     int number = -1;
     int Key = key;
@@ -147,31 +148,15 @@ void keyPressed() {
       }
       win=W;
       break;
-      case('p'):
-      println("//Sudoku Name");
-      println("public static final int[][] NAME = new int [] []{");
-      for (cell [] column : sudokuCells) {
-        print("{");
-        for (cell row : column) {
-          if (row.starter) {
-            print(row.value + ",");
-          } else {
-            print(0 + ",");
-          }
-        }
-        println("}"+",");
-      }
-      println("};");       
-      break;
       case('h'):
       //h
-      println("hint");
-      solveSudoku(true);
+      //println("hint");
+      solveSudoku(true,false);
       break;
       case('s'):
       //s
-      println("solved");
-      solveSudoku(false);
+      //println("solved");
+      //solveSudoku(false,false);
       break;
       case(-1):
       number=key-48;

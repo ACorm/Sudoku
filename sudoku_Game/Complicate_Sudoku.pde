@@ -25,7 +25,7 @@ void complicateSudoku() {
     }
     setSudokuState();
     sudokuCells [randX] [randY].value=0;    
-    if (solveSudoku(false)) {
+    if (solveSudoku(false,false)) {
       setCellState();
       sudokuCells [randX] [randY].value=0; 
       totalStartingValues--;

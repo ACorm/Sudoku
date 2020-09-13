@@ -37,8 +37,7 @@ class cell {
   void checkDigits() {
     IntList list;
     list=new IntList ();
-    //list.append(relativeCheck(column, row));
-    list.append(groupCheck(column, row));
+    list.append(check(column, row));
     IntList bufferList;
     bufferList = new IntList ();
     for (int add=0; add<list.size(); add++) {

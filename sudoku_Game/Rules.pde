@@ -1,36 +1,36 @@
-//int [] [] Rules = new int [] [] { 
-//  //               Middle \|/
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, //Middle
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-//  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} 
-//};
+int [] [] Rules = new int [] [] { 
+  //               Middle \|/
+  {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0}, 
+  {1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1}, //Middle
+  {0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0}, 
+  {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0} 
+};
 
-//IntList relativeCheck(int column, int row) {
-//  IntList list;
-//  list = new IntList ();  
-//  for (int rowCheck=-8; rowCheck<9; rowCheck++) {
-//    for (int columnCheck=-8; columnCheck<9; columnCheck++) {
-//      if (Rules [columnCheck+8] [rowCheck+8]==1 && -1<row+rowCheck && row+rowCheck<9 && -1<column+columnCheck && column+columnCheck<9) {
-//        list.append(sudokuCells [column+columnCheck] [row+rowCheck].value);
-//      }
-//    }
-//  }  
-//  return(list);
-//}
+IntList relativeCheck(int column, int row) {
+  IntList list;
+  list = new IntList ();  
+  for (int rowCheck=-8; rowCheck<9; rowCheck++) {
+    for (int columnCheck=-8; columnCheck<9; columnCheck++) {
+      if (Rules [columnCheck+8] [rowCheck+8]==1 && -1<row+rowCheck && row+rowCheck<9 && -1<column+columnCheck && column+columnCheck<9) {
+        list.append(sudokuCells [column+columnCheck] [row+rowCheck].value);
+      }
+    }
+  }  
+  return(list);
+}
 
 IntList groupCheck(int column, int row) {
   IntList list;
@@ -42,6 +42,19 @@ IntList groupCheck(int column, int row) {
           list.append(sudokuCells [columnCheck] [rowCheck].value);
         }
       }
+    }
+  }
+  return(list);
+}
+
+IntList check(int column, int row){
+  IntList list=new IntList();
+  list.append(groupCheck(column,row));
+  list.append(relativeCheck(column,row));
+  list.sort();
+  for(int i=list.size()-2;i>=0;i--){
+    if(list.get(i)==list.get(i+1)){
+      list.remove(i+1);
     }
   }
   return(list);
